@@ -52,12 +52,9 @@ codeAlphabet = create_code_alpabet(alphabet=alphabet, uniquePassLetters=uniquePa
 print(alphabet)
 print(codeAlphabet)
 
-wordToCode = input("input word to code: ")
+wordToCode = input("input word to code: ") #добавить проверку что все буквы входят в алфавит
 codeWord = word_to_code(word=wordToCode, alphabet=alphabet, codeAlphabet=codeAlphabet)
 print("new coded word: " + codeWord)
 
-
+#добавить чтобы key % кол-во букв в алфавите
     
-
-
-
