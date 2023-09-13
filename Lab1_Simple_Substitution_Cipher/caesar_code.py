@@ -1,15 +1,17 @@
 def is_key(key):
     try:
         key = int(key)
+        if key > len(alphabet):
+            key %= len(alphabet)
         return key
     except ValueError:
         print("key is not int")
         raise ValueError
     
-def is_correct_pswd(password):
-    for letter in password:
+def is_correct_input_word_value(word, alphabet):
+    for letter in word:
         if letter not in alphabet:
-            print("Incorrect password")
+            print("Incorrect input word value")
             raise ValueError
         
 def unique_letters(password):
@@ -41,20 +43,17 @@ def word_to_code(word, alphabet, codeAlphabet):
     return codeWord
 
 alphabet = ['а', 'б', 'в', 'г', 'д', 'е', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я']
-#INDENT = 1 # т.к отсчет по буквам начинают не с 0, а обращаться по индексам буду именно с помощью переменной key, то к ключу будет добавлен отступ
 key = input("key: ")
 key = is_key(key=key)
 password = input("Password: ").lower()
-is_correct_pswd(password=password)
+is_correct_input_word_value(word=password, alphabet=alphabet)
 uniquePassLetters = unique_letters(password=password)
 codeAlphabet = create_code_alpabet(alphabet=alphabet, uniquePassLetters=uniquePassLetters, key=key)
 
 print(alphabet)
 print(codeAlphabet)
 
-wordToCode = input("input word to code: ") #добавить проверку что все буквы входят в алфавит
+wordToCode = input("input word to code: ")
+is_correct_input_word_value(wordToCode, alphabet)
 codeWord = word_to_code(word=wordToCode, alphabet=alphabet, codeAlphabet=codeAlphabet)
 print("new coded word: " + codeWord)
-
-#добавить чтобы key % кол-во букв в алфавите
-    
